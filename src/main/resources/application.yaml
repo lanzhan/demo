@@ -1,0 +1,76 @@
+spring:
+    datasource:
+      url: jdbc:mysql://192.168.0.150:3306/fanhui?autoReconnect=true
+      username: dbadmin
+      password: 2017admin*QMX
+      driver-class-name: com.mysql.jdbc.Driver
+#   ָ���ļ���Ч�����л���
+    profiles:
+      active: local
+#   springboot�Դ���json���
+    jackson:
+#   �������������ʱ�����͵ģ����Ըø�ʽ���д���
+      date-format: yyyy-MM-dd HH:mm:ss
+      joda-date-time-format: yyyy-MM-dd HH:mm:ss
+      default-property-inclusion: NON_NULL
+      time-zone: GMT+8
+    http:
+      encoding:
+        charset: UTF-8
+#      ָ��http�������Ӧ���ַ�����Ĭ��: UTF-8
+#      �Ƿ���http�ı���֧��
+        force: true
+        enabled: true
+    messages:
+      encoding: UTF-8
+#   mvc������ʾͼ��
+    mvc:
+      favicon:
+        enabled: false
+#   ����  ��̬����   ��   ��̬���������ַ�ʽJDK��ʽ���Խӿ�ʵ�֣�Ҫ��Ŀ�����Ҳ�нӿ��Ҵ����Ĵ������Ҳ����Ҫת���ɽӿ�����ȥִ�з�������cglib��ʽ���Լ̳���ʵ�֣�
+#   ����������������ɫ��������ʵ����ʹ������Ĺ�ͬ�ӿڣ�
+#                �����ɫ����������ɫ�ڲ����ж���ʵ��������ã��Ӷ����Բ�����ʵ����
+#                          ͬʱ��������ṩ����ʵ������ͬ�Ľӿ��Ա����κ�ʱ�̶��ܴ���
+#                          ��ʵ����ͬʱ��������������ִ����ʵ�������ʱ����������
+#                          �Ĳ������൱�ڶ���ʵ������з�װ��
+#                ��ʵ��ɫ�������ɫ���������ʵ��������������Ҫ���õĶ���
+    aop:
+#   �����ǻ��ڽӿڻ��ǻ�����Ĵ���������trueΪ�࣬Ĭ��ҲΪfalse��������jdk����getClass����API
+      proxy-target-class: true
+#   �趨ģ��ļ���·��������Զ��ŷָ���Ĭ��: ["classpath:/templates/"]
+    freemarker:
+      template-loader-path: ["classpath:/templates/"]
+
+server:
+# ָ��Ҫʹ�õĶ˿�
+  port: 8080
+#  ����·��
+  servlet:
+    context-path: /
+#  �Ƿ���ѹ��
+  compression:
+    enabled: true
+#    ���X-Forwarded- *ͷӦ��Ӧ����HttpRequest
+#    ����ͷ��ʽ
+  use-forward-headers: true
+
+#  configuration管理MyBatis的配置，MyBatis的所有配置信息都存放的在configuration中。
+mybatis:
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    auto-mapping-behavior: full
+    default-statement-timeout: 2000
+    map-underscore-to-camel-case: true
+#   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations:
+    classpath*:mapper/**/*UserMapper.xml
+
+pagehelper:
+  helper-dialect: mysql
+
+
+
